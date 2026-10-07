@@ -27119,67 +27119,210 @@ body {
 }
 
 /* ==========================================================================
-   FLOATING ACTION BUTTONS / SPEED DIAL
+   GLOBAL TABLET & MOBILE COLUMN COLLAPSE & RESPONSIVE GRID
    ========================================================================== */
-.mobile-floating-dock {
+@media (max-width: 991.98px) {
+  /* Force all rows to wrap properly */
+  .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Force all columns in all sections to stack 100% full width */
+  .row > [class*="col-"],
+  .col-lg-12, .col-lg-8, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2,
+  .col-md-12, .col-md-8, .col-md-6, .col-md-5, .col-md-4, .col-md-3,
+  .col-sm-12, .col-sm-6, .col-sm-4,
+  :where(.sp-e60), :where(.sp-e84), :where(.sp-e120),
+  :where(.sp-e147), :where(.sp-e152), :where(.sp-e166),
+  :where(.sp-e190), :where(.sp-e206), :where(.sp-e217),
+  :where(.sp-e232), :where(.sp-e240), :where(.sp-e251), :where(.sp-e256) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+
+  /* Banner Hero Slider - Full 100% width on tablet & mobile */
+  .banner .col-lg-8,
+  .banner :where(.sp-e84),
+  .banner .slider,
+  .banner .slide_viewer,
+  .banner .slide_group {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+  }
+
+  /* Hide any legacy desktop sidebar duplicates from banner */
+  .banner .col-lg-4.mob,
+  .banner :where(.sp-e120) {
+    display: none !important;
+  }
+
+  /* Section 2: About Us - Stack ISO badge 100% above about text */
+  .about .col-lg-4,
+  .about :where(.sp-e147) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+    text-align: center !important;
+    margin-bottom: 25px !important;
+    padding: 0 15px !important;
+  }
+
+  .about .col-lg-8,
+  .about :where(.sp-e152) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+    text-align: left !important;
+    padding: 0 15px !important;
+  }
+
+  [dir="rtl"] .about .col-lg-8,
+  [dir="rtl"] .about :where(.sp-e152) {
+    text-align: right !important;
+  }
+
+  .about .homeimg {
+    max-width: 250px !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 auto 15px auto !important;
+    display: block !important;
+  }
+
+  .about h3.ios {
+    font-size: 17px !important;
+    line-height: 25px !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    word-wrap: break-word !important;
+    margin: 0 auto 20px auto !important;
+    padding: 0 !important;
+  }
+
+  /* Section 3: HSE & Quality 2x2 grid */
+  .hse .row.wid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .hse .col-lg-3,
+  .hse :where(.sp-e166) {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    width: 50% !important;
+    flex-basis: 50% !important;
+    padding: 8px !important;
+  }
+
+  .hse .bx {
+    height: 100% !important;
+    margin-bottom: 0 !important;
+    padding: 20px 10px !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+  }
+
+  /* Section 4: Services (Products) 1-column grid */
+  .product .row-cols-1 .col,
+  .product .row-cols-md-3 .col,
+  .product :where(.sp-e190) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Section 5: News 1-column grid */
+  .news .col-lg-4,
+  .news :where(.sp-e206),
+  .news :where(.sp-e217) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+    margin-bottom: 18px !important;
+  }
+
+  /* Section 6: Brochure Center & Certifications */
+  .certificate .col-sm-6,
+  .certificate .col-lg-8,
+  .certificate :where(.sp-e232),
+  .certificate :where(.sp-e240) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+    margin-bottom: 20px !important;
+  }
+
+  .certificate .d-md-flex {
+    display: block !important;
+  }
+
+  /* Section 7: Footer Columns */
+  footer .content .col-lg-2,
+  footer .content .col-lg-3,
+  footer :where(.sp-e251),
+  footer :where(.sp-e256) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+    margin-bottom: 25px !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE FLOATING WHATSAPP BUTTON (BOTTOM-RIGHT)
+   ========================================================================== */
+.mobile-whatsapp-floating {
   position: fixed;
-  bottom: calc(20px + env(safe-area-inset-bottom));
-  left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 9998;
-}
-
-[dir="rtl"] .mobile-floating-dock {
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  right: 24px;
   left: auto;
-  right: 20px;
-}
-
-.floating-action-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  z-index: 9998;
   text-decoration: none;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
-  position: relative;
-}
-
-.floating-action-btn:active {
-  transform: scale(0.9);
-}
-
-.floating-action-btn.wa-btn {
-  background: #25d366;
-  color: #ffffff;
-}
-
-.floating-action-btn.call-btn {
-  background: #009fe3;
-  color: #ffffff;
-}
-
-.floating-action-btn i {
-  font-size: 26px;
-  line-height: 1;
-}
-
-/* Subtle breathing glow on WhatsApp button */
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-  70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-.floating-action-btn.wa-btn {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: pulseGlow 2.5s infinite;
 }
 
-/* Hide old single wppBtn when new dock is used */
+[dir="rtl"] .mobile-whatsapp-floating {
+  right: auto;
+  left: 24px;
+}
+
+.mobile-whatsapp-floating:active {
+  transform: scale(0.9);
+}
+
+.mobile-whatsapp-floating i {
+  font-size: 30px;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* Hide legacy wppBtn */
+.wppBtn,
 .sp-e54 > .wppBtn {
   display: none !important;
 }
@@ -27242,17 +27385,6 @@ body {
     font-size: 13px !important;
     line-height: 20px !important;
     color: #585858 !important;
-  }
-
-  /* HSE Cards */
-  .hse .bx {
-    border-radius: 12px !important;
-    padding: 22px !important;
-    margin-bottom: 14px !important;
-  }
-
-  .hse .bx:active {
-    transform: scale(0.97);
   }
 
   /* News Cards */
