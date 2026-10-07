@@ -26040,12 +26040,13 @@ header .menu {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.7s ease-in-out, visibility 0.7s ease-in-out;
-  display: block !important;
+  display: none;
 }
 .banner .slide.active {
   opacity: 1;
   visibility: visible;
   z-index: 2;
+  display: block;
 }
 .banner .slide img.lap {
   width: 100%;
@@ -27034,178 +27035,39 @@ body {
 }
 
 /* ==========================================================================
-   MOBILE HERO SLIDER WITH TOUCH EXPERIENCE
-   ========================================================================== */
-@media (max-width: 767.98px) {
-  .banner.sp-e57 {
-    padding-top: 0 !important;
-    overflow: hidden;
-  }
-
-  .banner .slide_viewer.sp-e86 {
-    overflow: hidden;
-    position: relative;
-    border-radius: 0;
-    touch-action: pan-y pinch-zoom;
-  }
-
-  .banner .slide_group.sp-e87 {
-    height: 490px !important;
-    min-height: 460px !important;
-    position: relative;
-  }
-
-  .banner .slide {
-    position: absolute;
-    inset: 0;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  .banner .slide img.lap {
-    display: none !important;
-  }
-
-  .banner .slide img.mob {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
-  }
-
-  /* Ultra-Premium Vignette Overlay for Text Legibility */
-  .banner .slide::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0, 20, 35, 0.2) 0%, rgba(0, 20, 35, 0.6) 45%, rgba(0, 20, 35, 0.92) 100%);
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* Mobile Slide Text */
-  .banner .slide__text {
-    position: absolute !important;
-    left: 20px !important;
-    right: 20px !important;
-    bottom: 30px !important;
-    z-index: 3 !important;
-    text-align: left !important;
-    padding: 0 !important;
-  }
-
-  [dir="rtl"] .banner .slide__text {
-    text-align: right !important;
-  }
-
-  .banner .slide__text h2 {
-    font-size: 11px !important;
-    letter-spacing: 1.5px !important;
-    text-transform: uppercase !important;
-    font-weight: 700 !important;
-    color: #ffc023 !important;
-    background: rgba(0, 0, 0, 0.35) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    display: inline-block !important;
-    padding: 4px 12px !important;
-    border-radius: 50px !important;
-    margin-bottom: 8px !important;
-    border: 1px solid rgba(255, 192, 35, 0.3) !important;
-  }
-
-  .banner .slide__text h1 {
-    font-size: 22px !important;
-    line-height: 29px !important;
-    font-weight: 700 !important;
-    color: #ffffff !important;
-    margin-bottom: 8px !important;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6) !important;
-  }
-
-  .banner .slide__text p {
-    font-size: 13px !important;
-    line-height: 19px !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-    margin-bottom: 14px !important;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) !important;
-  }
-
-  .banner .slide__text .btn {
-    padding: 10px 24px !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    border-radius: 50px !important;
-    background: #009fe3 !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 16px rgba(0, 159, 227, 0.4) !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-
-  /* Slide Buttons / Pagination Pills on Mobile */
-  .banner .slide_buttons {
-    position: absolute !important;
-    bottom: 10px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    display: flex !important;
-    gap: 6px !important;
-    z-index: 4 !important;
-    padding: 0 !important;
-  }
-
-  .banner .slide_buttons .slide_btn {
-    width: 8px !important;
-    height: 8px !important;
-    border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.45) !important;
-    color: transparent !important;
-    overflow: hidden !important;
-    display: inline-block !important;
-    font-size: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    cursor: pointer !important;
-  }
-
-  .banner .slide_buttons .slide_btn.active {
-    width: 26px !important;
-    border-radius: 4px !important;
-    background: #009fe3 !important;
-    box-shadow: 0 0 10px rgba(0, 159, 227, 0.6) !important;
-  }
-
-  .banner .directional_nav,
-  .banner .line {
-    display: none !important;
-  }
-
-  /* Mobile Duplicate Callouts */
-  .banner .col-lg-4.mob {
-    padding: 20px 16px 0 16px !important;
-  }
-}
-
-/* ==========================================================================
    GLOBAL TABLET & MOBILE COLUMN COLLAPSE & RESPONSIVE GRID
    ========================================================================== */
 @media (max-width: 991.98px) {
-  /* Force all rows to wrap properly */
-  .row {
+  /* Strictly hide desktop header navigation row on tablet & mobile */
+  header .row.lap,
+  header .row.mob,
+  header .desktop-nav-only,
+  header .lap,
+  header :where(.sp-e4),
+  header :where(.sp-e5),
+  header :where(.sp-e10),
+  header .menu,
+  header .brand,
+  header .navbar-nav {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* Force responsive content rows to wrap, excluding desktop-only header */
+  .row:not(.desktop-nav-only):not(.lap) {
     display: flex !important;
     flex-wrap: wrap !important;
   }
 
   /* Force all columns in all sections to stack 100% full width */
-  .row > [class*="col-"],
+  .row:not(.desktop-nav-only):not(.lap) > [class*="col-"],
   .col-lg-12, .col-lg-8, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2,
   .col-md-12, .col-md-8, .col-md-6, .col-md-5, .col-md-4, .col-md-3,
   .col-sm-12, .col-sm-6, .col-sm-4,
@@ -27219,7 +27081,7 @@ body {
     flex-basis: 100% !important;
   }
 
-  /* Banner Hero Slider - Full 100% width, Edge-to-Edge, Zero Gap on Tablet & Mobile */
+  /* Banner Hero Slider - Full 100% width, Edge-to-Edge, Fixed 520px Height */
   .banner,
   .banner.sp-e57,
   :where(.sp-e57) {
@@ -27262,8 +27124,7 @@ body {
   .banner .slide_viewer,
   .banner .slide_viewer.sp-e86,
   .banner .slide_group,
-  .banner .slide_group.sp-e87,
-  .banner .slide {
+  .banner .slide_group.sp-e87 {
     width: 100% !important;
     max-width: 100% !important;
     height: 520px !important;
@@ -27273,22 +27134,75 @@ body {
     padding: 0 !important;
     border-radius: 0 !important;
     position: relative !important;
+    overflow: hidden !important;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  /* Each Slide strictly occupies 100% of the 520px box */
+  .banner .slide,
+  .banner .slide.eff,
+  .banner :where(.sp-e88),
+  .banner :where(.sp-e104) {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 520px !important;
+    min-height: 520px !important;
+    max-height: 520px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .banner .slide.active {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 2 !important;
+  }
+
+  .banner .slide:not(.active) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    z-index: 1 !important;
+  }
+
+  /* Slide Image handling */
+  .banner .slide img.lap {
+    display: none !important;
   }
 
   .banner .slide img.mob,
-  .banner .slide img {
+  .banner .slide > img:not(.lap) {
+    display: block !important;
     width: 100% !important;
     height: 520px !important;
     min-height: 520px !important;
     max-height: 520px !important;
     object-fit: cover !important;
-    display: block !important;
+    object-position: center !important;
   }
 
-  /* Slide Content Overlay - Fully unclipped and visible */
-  .banner .slide__text {
+  /* Ultra-Premium Vignette Overlay for Text Legibility */
+  .banner .slide::after {
+    content: '' !important;
     position: absolute !important;
-    bottom: 35px !important;
+    inset: 0 !important;
+    background: linear-gradient(180deg, rgba(0, 15, 30, 0.25) 0%, rgba(0, 15, 30, 0.55) 45%, rgba(0, 15, 30, 0.92) 100%) !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+  }
+
+  /* Slide Content Overlay pinned above pagination dots */
+  .banner .slide__text,
+  .banner :where(.sp-e89),
+  .banner :where(.sp-e105) {
+    position: absolute !important;
+    bottom: 40px !important;
     left: 20px !important;
     right: 20px !important;
     top: auto !important;
@@ -27299,25 +27213,37 @@ body {
     text-align: left !important;
   }
 
-  [dir="rtl"] .banner .slide__text {
+  [dir="rtl"] .banner .slide__text,
+  [dir="rtl"] .banner :where(.sp-e89),
+  [dir="rtl"] .banner :where(.sp-e105) {
     text-align: right !important;
   }
 
+  .banner .slide__text h2,
   .banner span.tag,
-  .banner .sp-e90 {
-    display: inline-block !important;
+  .banner :where(.sp-e90),
+  .banner :where(.sp-e106) {
     font-size: 11px !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
     font-weight: 700 !important;
-    padding: 4px 10px !important;
-    border-radius: 4px !important;
-    margin-bottom: 8px !important;
-    letter-spacing: 0.5px !important;
+    color: #ffc023 !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    display: inline-block !important;
+    padding: 4px 12px !important;
+    border-radius: 50px !important;
+    margin: 0 0 8px 0 !important;
+    border: 1px solid rgba(255, 192, 35, 0.35) !important;
   }
 
-  .banner h1,
-  .banner h1.sp-e89 {
+  .banner .slide__text h1,
+  .banner :where(.sp-e91),
+  .banner :where(.sp-e99),
+  .banner :where(.sp-e107) {
     font-size: 20px !important;
-    line-height: 1.3 !important;
+    line-height: 27px !important;
     font-weight: 700 !important;
     margin: 0 0 8px 0 !important;
     padding: 0 !important;
@@ -27325,46 +27251,102 @@ body {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
   }
 
-  .banner h2,
-  .banner h2.sp-e91 {
+  .banner .slide__text p,
+  .banner p.sp-e92,
+  .banner :where(.sp-e92) {
     font-size: 13px !important;
-    line-height: 1.45 !important;
+    line-height: 19px !important;
     font-weight: 400 !important;
     margin: 0 0 14px 0 !important;
     padding: 0 !important;
-    color: #e9ecef !important;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    background: transparent !important;
+    height: auto !important;
+    max-height: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
     display: -webkit-box !important;
     -webkit-line-clamp: 2 !important;
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
   }
 
-  .banner a.btn-primary,
-  .banner .sp-e92 {
+  .banner .slide__text a.btn,
+  .banner .slide__text .btn,
+  .banner a.btn.sp-e94,
+  .banner a.btn.sp-e109,
+  .banner :where(.sp-e94),
+  .banner :where(.sp-e109) {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     height: 38px !important;
-    padding: 0 20px !important;
+    padding: 0 22px !important;
     font-size: 13px !important;
-    font-weight: 600 !important;
-    border-radius: 6px !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
     background: #009fe3 !important;
     color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(0, 159, 227, 0.35) !important;
+    box-shadow: 0 4px 14px rgba(0, 159, 227, 0.4) !important;
     text-decoration: none !important;
     visibility: visible !important;
     opacity: 1 !important;
+    gap: 8px !important;
+    margin: 0 !important;
   }
 
-  .banner .slide_buttons {
+  /* Slide Buttons / Pagination Pills on Mobile */
+  .banner .slide_buttons,
+  .banner :where(.sp-e112) {
+    position: absolute !important;
+    top: auto !important;
     bottom: 12px !important;
-    z-index: 10 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
     display: flex !important;
     justify-content: center !important;
-    gap: 8px !important;
-    width: 100% !important;
+    align-items: center !important;
+    gap: 6px !important;
+    z-index: 10 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .banner .slide_buttons .slide_btn,
+  .banner :where(.sp-e113),
+  .banner :where(.sp-e114) {
+    width: 8px !important;
+    height: 8px !important;
+    min-width: 8px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.45) !important;
+    color: transparent !important;
+    overflow: hidden !important;
+    display: inline-block !important;
+    font-size: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+    border: none !important;
+  }
+
+  .banner .slide_buttons .slide_btn.active,
+  .banner .slide_buttons a.active {
+    width: 26px !important;
+    border-radius: 4px !important;
+    background: #009fe3 !important;
+    box-shadow: 0 0 10px rgba(0, 159, 227, 0.6) !important;
+  }
+
+  .banner .directional_nav,
+  .banner .line,
+  .banner :where(.sp-e115),
+  .banner :where(.sp-e116) {
+    display: none !important;
   }
 
   /* Hide any legacy desktop sidebar duplicates from banner */
