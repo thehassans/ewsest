@@ -100,64 +100,138 @@
         </div>
       </div>
 
-      <!-- Mobile Navigation -->
-      <div class="row mob sp-e30">
-        <div class="col-lg-12 col-md-12 col-sm-12 sp-e31">
-          <ul class="menu sp-e32">
-            <li class="sp-e33">
-              <a class="brand sp-e34" href="#home">
-                <img src="assets/logo.png" class="brand-logo sp-e35" alt="Eastern Workforce Solutions Establishment" style="max-height: 44px; width: auto;">
-              </a>
-            </li>
-          </ul>
-
-          <input id="toggle" type="checkbox" autocomplete="off" class="sp-e36">
-          <label class="hamburger sp-e37" for="toggle">
-            <div class="top sp-e38"></div>
-            <div class="meat sp-e38"></div>
-            <div class="bottom sp-e38"></div>
-          </label>
-
-          <div class="nav sp-e39">
-            <div class="nav-wrapper sp-e40">
-              <nav class="sp-e41">
-                <ul class="sp-e42">
-                  <li class="flo sp-e43" style="display: flex; gap: 10px; justify-content: center; padding: 10px;">
-                    <button class="btn button-primary lang-select-btn" data-lang="ar" style="padding: 6px 16px; font-size: 12px;">العربية (KSA)</button>
-                    <button class="btn button-primary lang-select-btn" data-lang="en" style="padding: 6px 16px; font-size: 12px; background: #6c757d;">English (ENG)</button>
-                  </li>
-                  <li class="sp-e43"><a href="#home" class="sp-e45" data-i18n="nav_home">Home</a></li>
-                  <li class="sp-e43"><a href="#about" class="sp-e45" data-i18n="nav_about">About Us</a></li>
-                  <li class="sp-e43"><a href="#policies" class="sp-e45" data-i18n="nav_policies">HSE &amp; Policies</a></li>
-                  <li class="drop sp-e51">
-                    <a href="#services" class="sp-e45"><span data-i18n="nav_services">SERVICES</span> <i class="demo-icon icon-arrow-down-sign-to-navigate sp-e47">&#xe821;</i></a>
-                    <div class="dropdown-content sp-e52">
-                      <a href="#services" class="sp-e49 open-service-modal-trigger" data-service="Technical &amp; Engineering Staffing" data-i18n="serv_tech">Technical &amp; Engineering Staffing</a>
-                      <a href="#services" class="sp-e50 open-service-modal-trigger" data-service="Industrial &amp; Construction Manpower" data-i18n="serv_ind">Industrial &amp; Construction Manpower</a>
-                      <a href="#services" class="sp-e50 open-service-modal-trigger" data-service="Operations &amp; Maintenance (O&amp;M)" data-i18n="serv_om">Operations &amp; Maintenance (O&amp;M)</a>
-                      <a href="#services" class="sp-e50 open-service-modal-trigger" data-service="Plant Shutdown &amp; Turnaround Crews" data-i18n="serv_shut">Plant Shutdown &amp; Turnaround Crews</a>
-                      <a href="#services" class="sp-e50 open-service-modal-trigger" data-service="Executive Search &amp; Headhunting" data-i18n="serv_exec">Executive Search &amp; Headhunting</a>
-                      <a href="#services" class="sp-e50 open-service-modal-trigger" data-service="Saudization &amp; Talent Localization" data-i18n="serv_saud">Saudization &amp; Talent Localization</a>
-                    </div>
-                  </li>
-                  <li class="sp-e43"><a href="procurement.html" class="sp-e45" data-i18n="nav_procurement">Procurement &amp; Vendors</a></li>
-                  <li class="sp-e43"><a href="#news" class="sp-e45" data-i18n="nav_news">Latest News</a></li>
-                  <li class="sp-e43"><a href="#brochure" class="sp-e45" data-i18n="nav_brochure">Brochure Center</a></li>
-                  <li class="sp-e53"><a href="#contact" class="sp-e45 open-contact-modal-trigger" data-i18n="nav_contact">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+      <!-- Ultra-Premium Mobile Navigation Bar -->
+      <div class="mobile-header-bar">
+        <a class="mobile-brand" href="#home" title="Eastern Workforce Solutions Establishment">
+          <img src="assets/logo.png" alt="Eastern Workforce Solutions Establishment Logo">
+        </a>
+        <div class="mobile-header-actions">
+          <a href="tel:+966541274482" class="mobile-quick-call" title="Call Us" aria-label="Direct Phone Call">
+            <i class="demo-icon">&#xf232;</i>
+          </a>
+          <button class="mobile-lang-pill lang-select-btn" id="mobile-lang-pill" data-lang="ar" aria-label="Switch Language">
+            <img id="mobile-header-lang-flag" src="assets/asset-021.jpg" width="18" height="12" alt="Language">
+            <span id="mobile-header-lang-text">العربية</span>
+          </button>
+          <button class="mobile-hamburger-btn" id="mobile-menu-toggle" aria-label="Open Navigation">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
         </div>
       </div>
 
     </div>
   </header>
 
-  <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
-  <a href="https://wa.me/966541274482?text=Hello%20Eastern%20Workforce%20Solutions%20Establishment,%20I%20would%20like%20to%20inquire%20about%20your%20manpower%20services." target="_blank" rel="noopener noreferrer" title="Message on WhatsApp" class="sp-e54">
-    <button class="wppBtn sp-e55" aria-label="Chat on WhatsApp"><i class="demo-icon icon-whatsapp sp-e56">&#xf232;</i></button>
-  </a>
+  <!-- ==================== ULTRA-PREMIUM MOBILE DRAWER & BACKDROP ==================== -->
+  <div id="mobile-drawer-overlay"></div>
+  <aside id="mobile-drawer" class="mobile-nav-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <a class="drawer-brand" href="#home">
+        <img src="assets/logo.png" alt="Eastern Workforce Solutions Establishment">
+      </a>
+      <button class="drawer-close-btn" id="mobile-drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+    
+    <div class="drawer-content">
+      <!-- Segmented Language Switcher -->
+      <div class="drawer-lang-selector">
+        <button class="drawer-lang-btn lang-select-btn" id="drawer-btn-ar" data-lang="ar">
+          <img src="assets/asset-021.jpg" width="18" height="12" alt="KSA"> العربية
+        </button>
+        <button class="drawer-lang-btn lang-select-btn" id="drawer-btn-en" data-lang="en">
+          <img src="assets/asset-020.jpg" width="18" height="12" alt="ENG"> English
+        </button>
+      </div>
+
+      <!-- Quick Contact Action Strip -->
+      <div class="drawer-quick-contacts">
+        <a href="tel:+966541274482" class="drawer-quick-btn call-btn">
+          <i class="demo-icon">&#xf232;</i> <span>+966 54 127 4482</span>
+        </a>
+        <a href="https://wa.me/966541274482?text=Hello%20Eastern%20Workforce%20Solutions,%20I%20would%20like%20to%20inquire%20about%20your%20manpower%20services." target="_blank" rel="noopener noreferrer" class="drawer-quick-btn wa-btn">
+          <i class="demo-icon icon-whatsapp">&#xf232;</i> <span>WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- Nav Links -->
+      <ul class="drawer-nav-list">
+        <li class="drawer-nav-item">
+          <a href="#home" class="drawer-nav-link active">
+            <span class="link-left"><i class="demo-icon icon-home-1 link-icon">&#xe810;</i> <span data-i18n="nav_home">Home</span></span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="#about" class="drawer-nav-link">
+            <span class="link-left"><i class="demo-icon link-icon">&#xe81a;</i> <span data-i18n="nav_about">ABOUT US</span></span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="#policies" class="drawer-nav-link">
+            <span class="link-left"><i class="demo-icon link-icon">&#xe817;</i> <span data-i18n="nav_policies">POLICIES</span></span>
+          </a>
+        </li>
+
+        <!-- Services Accordion in Mobile Drawer -->
+        <li class="drawer-nav-item">
+          <div class="drawer-nav-link drawer-accordion-btn" id="drawer-services-toggle">
+            <span class="link-left"><i class="demo-icon link-icon">&#xe819;</i> <span data-i18n="nav_services">SERVICES</span></span>
+            <i class="demo-icon drawer-chevron">&#xe821;</i>
+          </div>
+          <ul class="drawer-submenu" id="drawer-services-submenu">
+            <li><a href="#services" class="drawer-submenu-link open-service-modal-trigger" data-service="Technical &amp; Engineering Staffing" data-i18n="serv_tech">Technical &amp; Engineering Staffing</a></li>
+            <li><a href="#services" class="drawer-submenu-link open-service-modal-trigger" data-service="Industrial &amp; Construction Manpower" data-i18n="serv_ind">Industrial &amp; Construction Manpower</a></li>
+            <li><a href="#services" class="drawer-submenu-link open-service-modal-trigger" data-service="Operations &amp; Maintenance (O&amp;M)" data-i18n="serv_om">Operations &amp; Maintenance (O&amp;M)</a></li>
+            <li><a href="#services" class="drawer-submenu-link open-service-modal-trigger" data-service="Plant Shutdown &amp; Turnaround Crews" data-i18n="serv_shut">Plant Shutdown &amp; Turnaround Crews</a></li>
+            <li><a href="#services" class="drawer-submenu-link open-service-modal-trigger" data-service="Executive Search &amp; Headhunting" data-i18n="serv_exec">Executive Search &amp; Headhunting</a></li>
+            <li><a href="#services" class="drawer-submenu-link open-service-modal-trigger" data-service="Saudization &amp; Talent Localization" data-i18n="serv_saud">Saudization &amp; Talent Localization</a></li>
+          </ul>
+        </li>
+
+        <li class="drawer-nav-item">
+          <a href="procurement.html" class="drawer-nav-link" style="color: #009fe3; font-weight: 700;">
+            <span class="link-left"><i class="demo-icon link-icon">&#xe818;</i> <span data-i18n="nav_procurement">PROCUREMENT</span></span>
+            <span class="drawer-nav-badge">Portal</span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="#brochure" class="drawer-nav-link">
+            <span class="link-left"><i class="demo-icon link-icon">&#xe802;</i> <span data-i18n="nav_brochure">BROCHURE</span></span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="#news" class="drawer-nav-link">
+            <span class="link-left"><i class="demo-icon link-icon">&#xe810;</i> <span data-i18n="nav_news">NEWS</span></span>
+          </a>
+        </li>
+        <li class="drawer-nav-item">
+          <a href="#contact" class="drawer-nav-link open-contact-modal-trigger">
+            <span class="link-left"><i class="demo-icon link-icon">&#xe802;</i> <span data-i18n="nav_contact">CONTACT</span></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="drawer-footer">
+      <a href="#contact" class="drawer-cta-btn open-contact-modal-trigger" data-i18n="modal_req_title">
+        Request Manpower Solutions
+      </a>
+      <div class="drawer-meta-info">
+        Eastern Province &bull; Saudi Arabia &bull; Vision 2030
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== MOBILE FLOATING SPEED DIAL ==================== -->
+  <div class="mobile-floating-dock" aria-label="Quick contact speed dial">
+    <a href="https://wa.me/966541274482?text=Hello%20Eastern%20Workforce%20Solutions%20Establishment,%20I%20would%20like%20to%20inquire%20about%20your%20manpower%20services." target="_blank" rel="noopener noreferrer" class="floating-action-btn wa-btn" title="Chat on WhatsApp" aria-label="WhatsApp Chat">
+      <i class="demo-icon icon-whatsapp">&#xf232;</i>
+    </a>
+    <a href="tel:+966541274482" class="floating-action-btn call-btn" title="Direct Call" aria-label="Direct Phone Call">
+      <i class="demo-icon">&#xe810;</i>
+    </a>
+  </div>
 
   <!-- ==================== SECTION 1: BANNER ==================== -->
   <section class="banner sp-e57" id="home">
@@ -220,8 +294,8 @@
                     <p class="sp-e92" data-i18n="slide1_desc"><span class="sp-e93">EASTERN WORKFORCE SOLUTIONS</span> — Saudi Arabia's Leading Human Capital, Industrial Manpower &amp; Technical Staffing Partner.</p>
                     <a href="#about" class="btn sp-e94"><span data-i18n="banner_view_more">View more</span><i class="demo-icon icon-right-arrow sp-e95">&#xe802;</i></a>
                   </div>
-                  <img class="lap full zoom sp-e96" src="assets/asset-025.jpg" alt="Eastern Workforce Solutions Saudi Arabia" width="934" height="553">
-                  <img class="mob sp-e97" src="assets/asset-026.jpg" alt="Eastern Workforce Solutions Saudi Arabia" width="0" height="0">
+                  <img class="lap full zoom sp-e96" src="assets/eastern-hq-building.jpg" alt="Eastern Workforce Solutions Saudi Arabia" width="934" height="553">
+                  <img class="mob sp-e97" src="assets/eastern-hq-building.jpg" alt="Eastern Workforce Solutions Saudi Arabia">
                 </div>
 
                 <!-- Slide 2 -->
@@ -232,8 +306,8 @@
                     <p class="sp-e92" data-i18n="slide2_desc">Providing vetted engineers, certified technical specialists, and dedicated crews for major Saudi infrastructure and industrial ventures.</p>
                     <a href="#services" class="btn sp-e94"><span data-i18n="banner_view_more">View more</span><i class="demo-icon icon-right-arrow sp-e95">&#xe802;</i></a>
                   </div>
-                  <img class="lap full zoom sp-e96" src="assets/asset-027.jpg" alt="Saudi Arabia Manpower Solutions" width="0" height="0">
-                  <img class="mob sp-e97" src="assets/asset-028.jpg" alt="Saudi Arabia Manpower Solutions" width="0" height="0">
+                  <img class="lap full zoom sp-e96" src="assets/eastern-operations-center.jpg" alt="Saudi Arabia Manpower Solutions" width="934" height="553">
+                  <img class="mob sp-e97" src="assets/eastern-operations-center.jpg" alt="Saudi Arabia Manpower Solutions">
                 </div>
 
                 <!-- Slide 3 -->
@@ -244,8 +318,8 @@
                     <p class="sp-e92" data-i18n="slide3_desc">Driving sustainable human capital development, high-tier Saudization compliance, and world-class workforce management for corporate partners.</p>
                     <a href="#about" class="btn sp-e94"><span data-i18n="banner_view_more">View more</span><i class="demo-icon icon-right-arrow sp-e95">&#xe802;</i></a>
                   </div>
-                  <img class="lap full zoom sp-e96" src="assets/asset-029.jpg" alt="Vision 2030 Saudi Workforce" width="0" height="0">
-                  <img class="mob sp-e97" src="assets/asset-030.jpg" alt="Vision 2030 Saudi Workforce" width="0" height="0">
+                  <img class="lap full zoom sp-e96" src="assets/saudi-tower.jpg" alt="Vision 2030 Saudi Workforce" width="934" height="553">
+                  <img class="mob sp-e97" src="assets/saudi-tower.jpg" alt="Vision 2030 Saudi Workforce">
                 </div>
 
                 <!-- Slide 4 -->
@@ -269,8 +343,8 @@
                     </div>
                     <a href="#services" class="btn sp-e94"><span data-i18n="banner_view_more">View more</span><i class="demo-icon icon-right-arrow sp-e95">&#xe802;</i></a>
                   </div>
-                  <img class="lap full zoom sp-e96" src="assets/asset-031.jpg" alt="Workforce Services" width="0" height="0">
-                  <img class="mob sp-e97" src="assets/asset-032.jpg" alt="Workforce Services" width="0" height="0">
+                  <img class="lap full zoom sp-e96" src="assets/industrial-construction.jpg" alt="Workforce Services" width="934" height="553">
+                  <img class="mob sp-e97" src="assets/industrial-construction.jpg" alt="Workforce Services">
                 </div>
 
                 <!-- Slide 5 (BRANDED HEADQUARTERS BUILDING WITH EASTERN WORKFORCE SOLUTIONS SIGNAGE) -->
@@ -282,7 +356,7 @@
                     <a href="#contact" class="btn sp-e109 open-contact-modal-trigger"><span data-i18n="banner_view_more">View more</span><i class="demo-icon icon-right-arrow sp-e110">&#xe802;</i></a>
                   </div>
                   <img class="lap full zoom sp-e111" src="assets/eastern-hq-building.jpg" alt="Eastern Workforce Solutions Headquarters Building" width="934" height="553">
-                  <img class="mob sp-e97" src="assets/eastern-hq-building.jpg" alt="Eastern Workforce Solutions Headquarters Building" width="0" height="0">
+                  <img class="mob sp-e97" src="assets/eastern-hq-building.jpg" alt="Eastern Workforce Solutions Headquarters Building">
                 </div>
 
               </div>
@@ -357,6 +431,27 @@
           <h3 class="sp-e153" data-i18n="about_title">ABOUT <span>EASTERN WORKFORCE SOLUTIONS</span></h3>
           <p class="sp-e155" data-i18n="about_p1">A huge majority of industries across Saudi Arabia—such as Oil &amp; Gas, Petrochemicals, Heavy Construction, Energy, Logistics, Industrial Manufacturing, Marine, Infrastructure, and Facilities Management—are fundamentally dependent on skilled, reliable, and highly certified human capital. Across the Kingdom, workforce empowerment and strategic talent deployment are central contributors to the national economy and the realization of Saudi Vision 2030.</p>
           <p class="sp-e156" data-i18n="about_p2">Eastern Workforce Solutions Establishment has continuously created sustainable value through its diversified, comprehensive portfolio of staffing and human capital management solutions. Leveraging extensive regional experience, rigorous vetting standards, and full compliance with Saudi labor laws—together with close client collaboration and industry-leading recruitment networks—Eastern Workforce Solutions delivers differentiated staffing solutions that meet demanding project timelines and strict HSE standards.</p>
+          
+          <!-- Key Statistics Grid -->
+          <div class="mobile-stats-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0 24px 0;">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="font-size: 24px; font-weight: 800; color: #009fe3; line-height: 1;">1,500+</div>
+              <div style="font-size: 11px; font-weight: 600; color: #6c757d; margin-top: 6px;" data-i18n="stat_talent">Deployed Specialists</div>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="font-size: 24px; font-weight: 800; color: #28a745; line-height: 1;">6M+</div>
+              <div style="font-size: 11px; font-weight: 600; color: #6c757d; margin-top: 6px;" data-i18n="stat_safe">Safe Man-Hours</div>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="font-size: 20px; font-weight: 800; color: #fd7e14; line-height: 1.2;">ISO Triple</div>
+              <div style="font-size: 11px; font-weight: 600; color: #6c757d; margin-top: 6px;">9001 &bull; 45001 &bull; 14001</div>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+              <div style="font-size: 20px; font-weight: 800; color: #005373; line-height: 1.2;">Platinum</div>
+              <div style="font-size: 11px; font-weight: 600; color: #6c757d; margin-top: 6px;">Nitaqat Compliance</div>
+            </div>
+          </div>
+
           <a href="#services" class="btn sp-e157"><span data-i18n="about_btn">Learn More</span><i class="demo-icon icon-right-arrow sp-e110">&#xe802;</i></a>
         </div>
 

@@ -70,6 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "about_p1": "A huge majority of industries across Saudi Arabia—such as Oil & Gas, Petrochemicals, Heavy Construction, Energy, Logistics, Industrial Manufacturing, Marine, Infrastructure, and Facilities Management—are fundamentally dependent on skilled, reliable, and highly certified human capital. Across the Kingdom, workforce empowerment and strategic talent deployment are central contributors to the national economy and the realization of Saudi Vision 2030.",
       "about_p2": "Eastern Workforce Solutions Establishment has continuously created sustainable value through its diversified, comprehensive portfolio of staffing and human capital management solutions. Leveraging competitive cost advantages, rapid mobilization capacity, and extensive regional experience across the Eastern Province, Riyadh, and Western Region—together with strict compliance with Saudi Labor Law, Nitaqat guidelines, and international HSE standards—Eastern Workforce Solutions delivers differentiated staffing solutions that meet demanding project timelines.",
       "about_btn": "Learn More",
+      "stat_talent": "Deployed Specialists",
+      "stat_safe": "Safe Man-Hours",
 
       // HSE Section
       "hse_title": "HSE & <span>QUALITY</span>",
@@ -212,6 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
       "about_p1": "تعتمد كبرى القطاعات الصناعية في المملكة العربية السعودية—مثل النفط والغاز، والبتروكيماويات، والإنشاءات الضخمة، والطاقة، والخدمات اللوجستية، والتصنيع الثقيل، والملاحة، والبنية التحتية، وإدارة المرافق—بشكل جوهري على رأس مال بشري ماهر وموثوق ومعتمد. ويُعد تمكين القوى العاملة والنشر الاستراتيجي للكفاءات رافداً أساسياً للاقتصاد الوطني وتحقيق تطلعات رؤية السعودية 2030.",
       "about_p2": "تسعى مؤسسة الحلول الشرقية للقوى العاملة باستمرار إلى إيجاد قيمة مستدامة من خلال محفظتها المتنوعة والمتكاملة لحلول التوظيف وإدارة الموارد البشرية. وبفضل المزايا التنافسية وسرعة حشد الكوادر والخبرة الإقليمية الواسعة في المنطقة الشرقية والرياض والمنطقة الغربية—إلى جانب الالتزام التام بنظام العمل السعودي وضوابط نطاقات ومعايير الصحة والسلامة الدولية—تقدم المؤسسة حلولاً تفي بأعلى متطلبات المشاريع.",
       "about_btn": "اعرف المزيد",
+      "stat_talent": "كوادر فنية متخصصة",
+      "stat_safe": "ساعات عمل آمنة",
 
       // HSE Section
       "hse_title": "الصحة والسلامة والبيئة و<span>الجودة</span>",
@@ -429,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update flag and text indicator in header
+    // Update flag and text indicator in desktop header
     const currentFlagImg = document.getElementById('current-lang-flag');
     const currentLangText = document.getElementById('current-lang-text');
     if (currentFlagImg) {
@@ -438,14 +442,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentLangText) {
       currentLangText.textContent = lang === 'ar' ? 'العربية' : 'ENG';
     }
+
+    // Update mobile header language pill
+    const mobFlagImg = document.getElementById('mobile-header-lang-flag');
+    const mobLangText = document.getElementById('mobile-header-lang-text');
+    if (mobFlagImg) {
+      mobFlagImg.src = lang === 'ar' ? 'assets/asset-020.jpg' : 'assets/asset-021.jpg';
+    }
+    if (mobLangText) {
+      mobLangText.textContent = lang === 'ar' ? 'ENG' : 'العربية';
+    }
+
+    // Update drawer segmented buttons
+    const drawerBtnAr = document.getElementById('drawer-btn-ar');
+    const drawerBtnEn = document.getElementById('drawer-btn-en');
+    if (drawerBtnAr && drawerBtnEn) {
+      if (lang === 'ar') {
+        drawerBtnAr.classList.add('active');
+        drawerBtnEn.classList.remove('active');
+      } else {
+        drawerBtnAr.classList.remove('active');
+        drawerBtnEn.classList.add('active');
+      }
+    }
   }
 
   // Language Click Handlers
   document.querySelectorAll('.lang-select-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const lang = btn.getAttribute('data-lang');
-      setLanguage(lang);
+      // If clicked the mobile toggle pill, toggle to other language
+      if (btn.id === 'mobile-lang-pill') {
+        const target = currentLang === 'ar' ? 'en' : 'ar';
+        setLanguage(target);
+      } else {
+        const lang = btn.getAttribute('data-lang');
+        if (lang) setLanguage(lang);
+      }
     });
   });
 
@@ -555,6 +588,41 @@ document.addEventListener('DOMContentLoaded', () => {
   if (sliderViewer) {
     sliderViewer.addEventListener('mouseenter', stopAutoPlay);
     sliderViewer.addEventListener('mouseleave', startAutoPlay);
+
+    // Native Touch / Mobile Swipe Recognition
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    sliderViewer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      stopAutoPlay();
+    }, { passive: true });
+
+    sliderViewer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+      startAutoPlay();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      // Trigger only if horizontal swipe exceeds 40px and is predominantly horizontal
+      if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+        if (deltaX < 0) {
+          // Swiped left
+          if (isRtl) prevSlide(); else nextSlide();
+        } else {
+          // Swiped right
+          if (isRtl) nextSlide(); else prevSlide();
+        }
+      }
+    }
   }
 
   showSlide(0);
@@ -818,20 +886,96 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeVideoOverlay) closeVideoOverlay.addEventListener('click', closeVideo);
 
   // =========================================================================
-  // 10. MOBILE NAVIGATION & KEYBOARD ACCESSIBILITY
+  // 10. ULTRA-PREMIUM MOBILE DRAWER & ACCESSIBILITY
   // =========================================================================
-  const mobileToggle = document.getElementById('toggle');
-  const mobileNavLinks = document.querySelectorAll('header .nav a');
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (mobileToggle && mobileToggle.checked) {
-        mobileToggle.checked = false;
+  const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileDrawerOverlay = document.getElementById('mobile-drawer-overlay');
+  const mobileDrawerClose = document.getElementById('mobile-drawer-close');
+  const drawerServicesToggle = document.getElementById('drawer-services-toggle');
+  const drawerServicesSubmenu = document.getElementById('drawer-services-submenu');
+
+  function openMobileDrawer() {
+    if (mobileDrawer && mobileDrawerOverlay) {
+      mobileDrawer.classList.add('is-active');
+      mobileDrawerOverlay.classList.add('is-active');
+      if (mobileMenuBtn) mobileMenuBtn.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeMobileDrawer() {
+    if (mobileDrawer && mobileDrawerOverlay) {
+      mobileDrawer.classList.remove('is-active');
+      mobileDrawerOverlay.classList.remove('is-active');
+      if (mobileMenuBtn) mobileMenuBtn.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (mobileDrawer && mobileDrawer.classList.contains('is-active')) {
+        closeMobileDrawer();
+      } else {
+        openMobileDrawer();
       }
+    });
+  }
+
+  if (mobileDrawerClose) {
+    mobileDrawerClose.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileDrawer();
+    });
+  }
+
+  if (mobileDrawerOverlay) {
+    mobileDrawerOverlay.addEventListener('click', closeMobileDrawer);
+  }
+
+  // Drawer Services Accordion
+  if (drawerServicesToggle && drawerServicesSubmenu) {
+    drawerServicesToggle.addEventListener('click', () => {
+      drawerServicesToggle.classList.toggle('is-expanded');
+      drawerServicesSubmenu.classList.toggle('is-visible');
+    });
+  }
+
+  // Close drawer upon clicking any navigation link
+  document.querySelectorAll('#mobile-drawer a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileDrawer();
     });
   });
 
+  // Swipe-to-close on mobile drawer
+  let drawerTouchStartX = 0;
+  let drawerTouchEndX = 0;
+  if (mobileDrawer) {
+    mobileDrawer.addEventListener('touchstart', (e) => {
+      drawerTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    mobileDrawer.addEventListener('touchend', (e) => {
+      drawerTouchEndX = e.changedTouches[0].screenX;
+      const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+      const deltaX = drawerTouchEndX - drawerTouchStartX;
+      if (!isRtl && deltaX > 50) {
+        // Swiped right in LTR -> close
+        closeMobileDrawer();
+      } else if (isRtl && deltaX < -50) {
+        // Swiped left in RTL -> close
+        closeMobileDrawer();
+      }
+    }, { passive: true });
+  }
+
+  // Global Keyboard Accessibility (Escape key)
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      closeMobileDrawer();
       closeVideo();
       closeContactModal();
       closeNewsArticle();
